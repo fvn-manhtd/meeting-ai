@@ -38,9 +38,8 @@ class SpeechTextService {
 
   // Callback for speech recognition results
   void _onSpeechResult(SpeechRecognitionResult result) {
-    if (result.finalResult) {
-      _transcriptionController.add(result.recognizedWords);
-    }
+    // Send both partial and final results to stream
+    _transcriptionController.add(result.recognizedWords);
   }
 
   // Callback for status changes

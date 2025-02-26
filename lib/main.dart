@@ -52,11 +52,19 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
         (transcript) {
           final now = DateTime.now();
           setState(() {
-            _transcript.add(TranscriptEntry(
-              text: transcript,
-              speakerNumber: _selectedSpeaker,
-              timestamp: now,
-            ));
+            if (_transcript.isNotEmpty && !transcript.endsWith('.')) {
+              _transcript.last = TranscriptEntry(
+                text: transcript,
+                speakerNumber: _selectedSpeaker,
+                timestamp: now,
+              );
+            } else {
+              _transcript.add(TranscriptEntry(
+                text: transcript,
+                speakerNumber: _selectedSpeaker,
+                timestamp: now,
+              ));
+            }
           });
           print('New transcript: $transcript'); // Debugging output
         },
@@ -92,11 +100,19 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
             (transcript) {
               final now = DateTime.now();
               setState(() {
-                _transcript.add(TranscriptEntry(
-                  text: transcript,
-                  speakerNumber: _selectedSpeaker,
-                  timestamp: now,
-                ));
+                if (_transcript.isNotEmpty && !transcript.endsWith('.')) {
+                  _transcript.last = TranscriptEntry(
+                    text: transcript,
+                    speakerNumber: _selectedSpeaker,
+                    timestamp: now,
+                  );
+                } else {
+                  _transcript.add(TranscriptEntry(
+                    text: transcript,
+                    speakerNumber: _selectedSpeaker,
+                    timestamp: now,
+                  ));
+                }
               });
             },
             onError: (error) {
