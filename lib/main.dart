@@ -37,6 +37,13 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
 
   late TabController _tabController;
 
+  // Update language map
+  final Map<String, String> _languageCodes = {
+    'en': 'en_US',
+    'ja': 'ja_JP',
+    'zh': 'zh_CN',
+  };
+
   @override
   void initState() {
     super.initState();
@@ -95,7 +102,10 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
       } else {
         final hasPermission = await AppPermissions.requestMicrophoneAccess();
         if (hasPermission) {
-          await _speechService.startListening();
+          // Pass selected language when starting
+          await _speechService.startListening(
+            language: _languageCodes[_selectedLanguage],
+          );
           _transcriptionSubscription = _speechService.transcriptionStream.listen(
             (transcript) {
               final now = DateTime.now();
@@ -182,43 +192,23 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // First row: Recording Status and Language
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Recording Status: ${_recorder.isRecording ? 'ON' : 'OFF'}'),
-                  DropdownButton<String>(
-                    value: _selectedLanguage,
-                    items: const [
-                      DropdownMenuItem(value: 'en', child: Text('English')),
-                      DropdownMenuItem(value: 'es', child: Text('Spanish')),
-                      DropdownMenuItem(value: 'fr', child: Text('French')),
-                      DropdownMenuItem(value: 'de', child: Text('German')),
-                    ],
-                    onChanged: (value) => setState(() => _selectedLanguage = value!),
-                  ),
-                ],
-              ),
-              SizedBox(height: 8),
-              // Second row: Speaker Number selector
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Speaker Number:'),
-                  DropdownButton<int>(
-                    value: _selectedSpeaker,
-                    items: List.generate(
-                      5, // Number of speakers (1-5)
-                      (index) => DropdownMenuItem(
-                        value: index + 1,
-                        child: Text('Speaker ${index + 1}'),
-                      ),
-                    ),
-                    onChanged: (value) => setState(() => _selectedSpeaker = value!),
-                  ),
-                ],
+              Text('Recording Status: ${_recorder.isRecording ? 'ON' : 'OFF'}'),
+              DropdownButton<String>(
+                value: _selectedLanguage,
+                items: _languageCodes.keys.map((String key) {
+                  return DropdownMenuItem<String>(
+                    value: key,
+                    child: Text(_getLanguageName(key)),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  if (value != null) {
+                    setState(() => _selectedLanguage = value);
+                  }
+                },
               ),
             ],
           ),
@@ -263,6 +253,19 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
         if (_isLoading) const LinearProgressIndicator(),
       ],
     );
+  }
+
+  String _getLanguageName(String code) {
+    switch (code) {
+      case 'en':
+        return 'English';
+      case 'ja':
+        return 'Japanese';
+      case 'zh':
+        return 'Chinese';
+      default:
+        return 'Unknown';
+    }
   }
 
   @override

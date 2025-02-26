@@ -9,6 +9,7 @@ class SpeechTextService {
   final StreamController<String> _transcriptionController = StreamController<String>.broadcast();
   bool _isSpeechAvailable = false;
   bool _isListening = false;
+// Default language
 // Keep track of current transcript
   static const int PAUSE_THRESHOLD = 5; // 5 seconds pause threshold
 
@@ -20,11 +21,17 @@ class SpeechTextService {
     );
   }
 
-  // Start listening for speech input
-  Future<void> startListening() async {
+  // Start listening for speech input with language selection
+  Future<void> startListening({String? language}) async {
     if (_isSpeechAvailable && !_isListening) {
       _isListening = true;
-      await _speechToText.listen(onResult: _onSpeechResult);
+      await _speechToText.listen(
+        onResult: _onSpeechResult,
+        listenFor: Duration(minutes: 1),
+        pauseFor: Duration(seconds: 5),
+        partialResults: true,
+        localeId: language ?? 'en_US', // Use selected language or default to en_US
+      );
     }
   }
 
