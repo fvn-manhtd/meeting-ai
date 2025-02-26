@@ -27,10 +27,10 @@ class SpeechTextService {
       _isListening = true;
       await _speechToText.listen(
         onResult: _onSpeechResult,
-        listenFor: Duration(minutes: 1),
+        listenFor: Duration(minutes: 30),
         pauseFor: Duration(seconds: 5),
         partialResults: true,
-        localeId: language ?? 'en_US', // Use selected language or default to en_US
+        localeId: language ?? 'en_US', // Use selected language or default to en_US        
       );
     }
   }
