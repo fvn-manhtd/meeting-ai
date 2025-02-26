@@ -9,9 +9,7 @@ class SpeechTextService {
   final StreamController<String> _transcriptionController = StreamController<String>.broadcast();
   bool _isSpeechAvailable = false;
   bool _isListening = false;
-// Default language
-// Keep track of current transcript
-  static const int PAUSE_THRESHOLD = 5; // 5 seconds pause threshold
+  String _selectedLanguage = 'en_US';
 
   // Initialize the speech recognition service
   Future<void> initialize() async {
@@ -25,12 +23,12 @@ class SpeechTextService {
   Future<void> startListening({String? language}) async {
     if (_isSpeechAvailable && !_isListening) {
       _isListening = true;
+      _selectedLanguage = language ?? 'en_US';
       await _speechToText.listen(
         onResult: _onSpeechResult,
-        listenFor: Duration(minutes: 30),
-        pauseFor: Duration(seconds: 5),
-        partialResults: true,
-        localeId: language ?? 'en_US', // Use selected language or default to en_US        
+        listenFor: Duration(hours: 1),
+        pauseFor: Duration(seconds: 10),
+        localeId: _selectedLanguage,
       );
     }
   }
@@ -52,6 +50,11 @@ class SpeechTextService {
   // Callback for status changes
   void _onStatus(String status) {
     print('Speech status: $status');
+    if (status == 'done') {
+      if (_isListening) {
+        startListening(language: _selectedLanguage);
+      }
+    }
   }
 
   // Callback for errors
