@@ -11,6 +11,11 @@ PODS:
     - Flutter
   - sound_stream (0.0.1):
     - Flutter
+  - speech_to_text (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - Try
+  - Try (2.1.1)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -18,10 +23,12 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - sound_stream (from `.symlinks/plugins/sound_stream/ios`)
+  - speech_to_text (from `.symlinks/plugins/speech_to_text/darwin`)
 
 SPEC REPOS:
   trunk:
     - flutter_sound_core
+    - Try
 
 EXTERNAL SOURCES:
   Flutter:
@@ -34,6 +41,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   sound_stream:
     :path: ".symlinks/plugins/sound_stream/ios"
+  speech_to_text:
+    :path: ".symlinks/plugins/speech_to_text/darwin"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
@@ -42,6 +51,8 @@ SPEC CHECKSUMS:
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   sound_stream: eba0f2a5994b91d9e5009a739df6e98515a7b44f
+  speech_to_text: 627d3fd2194770b51abb324ba45c2d39398f24a8
+  Try: 5ef669ae832617b3cee58cb2c6f99fb767a4ff96
 
 PODFILE CHECKSUM: 6b6e8ce0f5e2376cc2595fd7e9dfe32541672263
 

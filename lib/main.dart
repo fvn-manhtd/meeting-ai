@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'services/audio_recorder.dart';
-import 'services/speech_service.dart';
+import 'services/speech_text2.dart';
 import 'utils/permissions.dart';
 import 'screens/recording_history_screen.dart';
 
@@ -28,8 +28,8 @@ class RecordingScreen extends StatefulWidget {
 class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProviderStateMixin {
   final AudioRecorder _recorder = AudioRecorder();
   final Logger _logger = Logger();
-  final SpeechService _speechService = SpeechService();
-  final List<String> _transcript = [];
+  final SpeechTextService _speechService = SpeechTextService();
+  final List<TranscriptEntry> _transcript = [];
   String _selectedLanguage = 'en';
   bool _isLoading = false;
   StreamSubscription<String>? _transcriptionSubscription;
@@ -48,6 +48,25 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
     try {
       await _recorder.initialize();
       await _speechService.initialize();
+      _transcriptionSubscription = _speechService.transcriptionStream.listen(
+        (transcript) {
+          final now = DateTime.now();
+          setState(() {
+            _transcript.add(TranscriptEntry(
+              text: transcript,
+              speakerNumber: _selectedSpeaker,
+              timestamp: now,
+            ));
+          });
+          print('New transcript: $transcript'); // Debugging output
+        },
+        onError: (error) {
+          _logger.e('Transcription error: $error');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Transcription error: $error')),
+          );
+        }
+      );
     } catch (e) {
       _logger.e('Service initialization error: $e');
       if (mounted) {
@@ -68,16 +87,16 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
       } else {
         final hasPermission = await AppPermissions.requestMicrophoneAccess();
         if (hasPermission) {
-          // Pass selected speaker number to startListening
-          final transcriptStream = _speechService.startListening(
-            speakerNumber: _selectedSpeaker,
-            languageCode: _selectedLanguage,
-          );
-          
-          _transcriptionSubscription = transcriptStream.listen(
+          await _speechService.startListening();
+          _transcriptionSubscription = _speechService.transcriptionStream.listen(
             (transcript) {
+              final now = DateTime.now();
               setState(() {
-                _transcript.add(transcript);
+                _transcript.add(TranscriptEntry(
+                  text: transcript,
+                  speakerNumber: _selectedSpeaker,
+                  timestamp: now,
+                ));
               });
             },
             onError: (error) {
@@ -92,6 +111,7 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
           setState(() {});
         } else {
           _logger.w('Permission denied');
+          // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Microphone permission required')),
           );
@@ -198,7 +218,7 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Speaker ${_selectedSpeaker} is speaking:',
+                      'Speaker ${_transcript[index].speakerNumber} is speaking:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.purple[700],
@@ -207,12 +227,12 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
                     ),
                     SizedBox(height: 8),
                     Text(
-                      _transcript[index],
+                      _transcript[index].text,
                       style: TextStyle(fontSize: 16),
                     ),
                     SizedBox(height: 4),
                     Text(
-                      DateTime.now().toString().substring(11, 19),
+                      _transcript[index].timestamp.toString().substring(11, 19),
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.grey[600],
@@ -237,4 +257,16 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
     _tabController.dispose();
     super.dispose();
   }
+}
+
+class TranscriptEntry {
+  final String text;
+  final int speakerNumber;
+  final DateTime timestamp;
+
+  TranscriptEntry({
+    required this.text,
+    required this.speakerNumber,
+    required this.timestamp,
+  });
 }
