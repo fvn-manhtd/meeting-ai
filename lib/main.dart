@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'services/audio_recorder.dart';
 import 'utils/permissions.dart';
+import 'screens/recording_history_screen.dart';
 
 void main() => runApp(MeetingAssistantApp());
 
@@ -137,6 +138,17 @@ class _RecordingScreenState extends State<RecordingScreen> with SingleTickerProv
             Tab(icon: Icon(Icons.text_snippet), text: 'Summary'),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.history),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RecordingHistoryScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: TabBarView(
         controller: _tabController,

@@ -1,0 +1,10 @@
+framework module sound_stream {
+  umbrella header "sound_stream-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module sound_stream.__Swift {
+  exclude header "sound_stream-Swift.h"
+}

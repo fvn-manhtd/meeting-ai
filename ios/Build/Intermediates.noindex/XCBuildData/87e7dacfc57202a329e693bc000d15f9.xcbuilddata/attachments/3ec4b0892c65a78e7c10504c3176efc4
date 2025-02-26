@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/tranmanh/Desktop/LEARN/code/meeting_assistant/build/ios/Debug-iphoneos/sound_stream/sound_stream.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/tranmanh/Desktop/LEARN/code/meeting_assistant/ios/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/sound_stream.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/tranmanh/Desktop/LEARN/code/meeting_assistant/build/ios/Debug-iphoneos/sound_stream/sound_stream.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "sound_stream-Swift.h",
+      'external-contents': "/Users/tranmanh/Desktop/LEARN/code/meeting_assistant/ios/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/sound_stream.build/unextended-interface-header.h",
+    }]
+    }]
+}
