@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "meeting-assistant-452104",
+  "private_key_id": "88bb62fa4786b2b9d0756916ddcda945f56f0b5d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDtsJw67rEU3M35\ncQxyrxXc40UkN3AzThra/dWdOb95XuhS4zXGRbLJ+9LmD9IJLSm233fpxGIudoIg\nq8EUvgORmnJ2CeVrwAdcDuR4cDnPaKblubdZ/utq6fY8bURnNZtSg/UhOk/S1uRV\nc1mDwnAWLxSgi2MXb298+OA/iAxzC5agmebqF1mnMHWdInTvCGwsN4APYmgCHzTg\n40oJfKT8wX83m2xihEPXBShfMjNYK7moSv/jiIjbK19nan46xWarwyhbfs/VABFj\nrLE8WEPp7gWcnANTdXiIgwLgTXpOeBDukpuN/yaiX8bDVte702ulw9KUvoyBHuSd\nNLRIwujDAgMBAAECggEAERwE6vMSmSNZykpacIjs5HURnY1GDNNi+H+MGGC3STfN\nNmY3kTmkKIjxgfECl/mBxrGoUpH51UlfjZV/dQxGen0pHxkQRCTTAsvpo0fEyYrJ\ndMDdE2PXs177BBeDdIB12Uc5ZnZpl44zank+qM7evaIO9I2ECQRS/KZ3kesrpj48\nSDba2kQMSNjYcbhlcZiEdriW4/VjI/VC9A9TLPOpo3bSI3e7jlVNR4sHM0xqjGEZ\nMy36+LVRQ8vtdC7FiCNjpglAw72kGzaM+0ySI3fglx+/bxOLLHh0673bGyYWtqDu\nx5OBBHnmIix1koViSRU31AEDDGpgG2ca77u/8TQj3QKBgQD8djae1DKH0+zkY1qY\ntobmrDzIGhCqFRKlAFxQVjXr4snqElYAiTe63G50RcXqQKSgLVQSZ0na53kTjKYn\nbdeHarIxX6Lxpk8S51qXd/JSQA97jvcyASGTs2vmB1IULeXkf72JeJ/NvZYjpMfC\nLs0Zn/oWdHAPXxzzxdWKNoAkDQKBgQDxBWXo7Gmv8Rpq9u8BGE0Y5pEAlzvr7MGE\nU/2Buu/Bv/8J4h+7dBm8Z4LUNQLM+C5eykO7qKxMYBwMFgNicgmx6z/4UE1KzcOD\n7xcrzvqvGy+ARI/wVXfS6fDIMTwzNsIDmOZ1M5N2vG+RwVwA0rO7egHluZy9O6n1\nB05APdT8DwKBgQCpQwx90mEKhgCmYyJjjsTFNScPNcKEddppO+OojRRb0VJ0l9SH\nSXhO1OlNFVaLJsn5Bkr+h7eRh226uKrRdqhxBwzvY2JYx5ruXqRzNx0FHiQDQCfl\no7KCV2H4+GGEW/1tBGPsHi5t/zUBMsInI7+o9YPzuB9FfwxnN/ViVAX3pQKBgB3v\nmbTQiF/+BlX6zbzJE+pf2OrF3f9zrKWO+RG/8j+SZU8I8wAJb5jjEnDhFLP4r2m+\nnaMVVDE4TsOBiHIVz/Z1TcC92JvN6tbcP3iFgMV3DvNTkL09IGDmBa4Xz25dAsQH\nnbg467v3s7Pa3F6NzR0gDlRGNZ2bZ4Szn5iDFY0pAoGAURFuxt/rnj/R+5YBgP1h\n7ZdNeHYG1FjHnS4I7s7LtuZnKaioSrEUOnxXWfuHZZKw+mzssBL3x4p5IQDy+wbb\n+lNq5V6LZAeh0+Qu1kFZHdc+ODYpEpXfwITW3n8ZmgMn+AEUId5pdj8Wv3ajQ3HI\njKod1vePM+w56IsgtI/bpWY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "meeting-assistant-app@meeting-assistant-452104.iam.gserviceaccount.com",
+  "client_id": "116357012367064309479",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/meeting-assistant-app%40meeting-assistant-452104.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

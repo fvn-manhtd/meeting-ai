@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/tranmanh/Desktop/LEARN/code/meeting_assistant/ios/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/permission_handler_apple.build/module.modulemap \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/PermissionManager.m \
+  /Users/tranmanh/Desktop/LEARN/code/meeting_assistant/ios/Pods/Target\ Support\ Files/permission_handler_apple/permission_handler_apple-prefix.pch \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Modules/module.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/PermissionManager.h \
+  /Users/tranmanh/Desktop/FlutterSDK/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Modules/module.modulemap \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/AudioVideoPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/PermissionHandlerEnums.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AVFoundation.framework/Modules/module.modulemap \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/AppTrackingTransparencyPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/UnknownPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/BackgroundRefreshStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/BluetoothPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/ContactPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/EventPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/LocationPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/MediaLibraryPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PhonePermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/PhotoPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/SensorPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/SpeechPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/StoragePermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/NotificationPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/CriticalAlertsPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/strategies/AssistantPermissionStrategy.h \
+  /Users/tranmanh/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.6/ios/Classes/util/Codec.h
