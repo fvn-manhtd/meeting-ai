@@ -38,7 +38,7 @@ dependencies:
   logger: ^1.1.0
   sound_stream: ^0.3.0   # For audio streaming
   grpc: ^3.0.0          # Required for Google APIs
-  googleapis: ^11.0.0
+  googleapis: ^13.2.0
   googleapis_auth: ^1.1.0
 
   # The following adds the Cupertino Icons font to your application.

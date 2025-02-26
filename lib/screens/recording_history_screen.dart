@@ -24,18 +24,53 @@ class RecordingHistoryScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: files.length,
               itemBuilder: (context, index) {
-                final file = files[index];
+                final file = files[index] as File;
                 final fileName = file.path.split('/').last;
-                return ListTile(
-                  title: Text(fileName),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AudioPlaybackScreen(file: file as File),
-                      ),
+                final fileStats = file.statSync();
+                final fileDate = DateTime.fromMillisecondsSinceEpoch(
+                    fileStats.modified.millisecondsSinceEpoch);
+
+                return Dismissible(
+                  key: Key(file.path),
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: const Icon(Icons.delete, color: Colors.white),
+                  ),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) {
+                    file.deleteSync();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('$fileName deleted')),
                     );
                   },
+                  child: Card(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 4.0,
+                    ),
+                    child: ListTile(
+                      leading: const Icon(Icons.audio_file),
+                      title: Text(
+                        fileName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        '${fileDate.toString().split('.')[0]}',
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                AudioPlaybackScreen(file: file),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 );
               },
             );

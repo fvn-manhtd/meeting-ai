@@ -3,6 +3,7 @@ import 'package:googleapis/speech/v1.dart' as speech;
 import 'package:sound_stream/sound_stream.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
 
 /// Service to handle Speech-to-Text conversion using Google Cloud Speech API
 class SpeechService {
@@ -51,6 +52,7 @@ class SpeechService {
 
   void _startRecognition() async {
     try {
+      print('Starting recognition with V1 API...');
       final recognizeRequest = speech.RecognizeRequest(
         config: speech.RecognitionConfig(
           encoding: 'LINEAR16',
@@ -58,17 +60,30 @@ class SpeechService {
           languageCode: 'en-US',
           enableAutomaticPunctuation: true,
           model: 'default',
+          // Enable data logging for better pricing
+          enableWordTimeOffsets: false,
+          useEnhanced: true,
         ),
+        audio: speech.RecognitionAudio(),
       );
 
-      // Set up audio stream
       _audioSubscription = _recorder.audioStream.listen(
         (audio) async {
           try {
+            print('Audio received - bytes: ${audio.length}');
+            
+            // Properly encode audio data to base64
+            final String base64Audio = base64Encode(audio);
+            recognizeRequest.audio = speech.RecognitionAudio()
+              ..content = base64Audio;
+            
+            print('Sending request to Google Speech V1 API...');
             final response = await _speechApi!.speech.recognize(recognizeRequest);
+            
             if (response.results?.isNotEmpty ?? false) {
               final transcript = response.results!.first.alternatives?.first.transcript;
-              if (transcript != null) {
+              if (transcript != null && transcript.isNotEmpty) {
+                print('Transcript: $transcript');
                 _textController?.add(transcript);
               }
             }
@@ -76,14 +91,9 @@ class SpeechService {
             print('Recognition error: $e');
           }
         },
-        onError: (error) {
-          print('Audio stream error: $error');
-          stopListening();
-        },
       );
     } catch (e) {
-      print('Failed to start recognition: $e');
-      stopListening();
+      print('Start recognition error: $e');
     }
   }
 
